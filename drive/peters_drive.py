@@ -93,7 +93,7 @@ def visit_sites(service, total, test_settings):
     driver_options.add_argument('--user-agent=' + chromiumlike_user_agent)
   else:
     driver_options.add_argument('--sparrow-force-fieldtrial')
-    driver_options.add_argument('--sparrow-enable-experimental=onhover-preconnect-subresources')
+    driver_options.add_argument('--sparrow-enable-experimental=onhover-preconnect-subresources,do-not-cookiedefer-likely-static-resources')
 
   test_label = (sys.platform + '-' + hex(get_mac()) + '-' + test_settings['mode'] +
     '-' + cache + '-' + test_settings['start_time'])
