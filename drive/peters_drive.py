@@ -27,8 +27,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 user = 'peter'
 #binary_location= '/Users/pete/Git/src/out/Release/Sparrow.app/Contents/MacOS/Sparrow'
 binary_location = '/Applications/Sparrow.app/Contents/MacOS/Sparrow'
+chromiumlike_user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.11683 Safari/537.36'
 if (sys.platform == 'win32'):
   binary_location = 'C:\\Users\\viasat\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe'
+  chromiumlike_user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.11683 Safari/537.36'
 sitelist_url = 'http://bizzbyster.github.io/sitelists/https.txt'
 #sitelist_url = 'http://bizzbyster.github.io/sitelists/basic.txt'
 #sitelist_url = 'http://bizzbyster.github.io/sitelists/top5_from_top200.txt'
@@ -80,13 +82,15 @@ def visit_sites(service, total, test_settings):
     shutil.rmtree('./' + test_settings['mode'], ignore_errors=True)
     if not os.path.exists('./' + test_settings['mode']):
       os.mkdir( './' + test_settings['mode'], 0755 );
+    if not os.path.exists('./' + test_settings['mode'] + '/screenshots'):
+      os.mkdir( './' + test_settings['mode'] + '/screenshots', 0755 );
     cache = 'cold'
 
   # Set commandline options
   driver_options = Options()
   if test_settings['mode'] == 'chromiumlike':
     driver_options.add_argument('--sparrow-force-fieldtrial=chromiumlike')
-    driver_options.add_argument('--user-agent=\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2564.5647 Safari/537.36\"')
+    driver_options.add_argument('--user-agent=' + chromiumlike_user_agent)
   else:
     driver_options.add_argument('--sparrow-force-fieldtrial')
 
@@ -139,6 +143,11 @@ def visit_sites(service, total, test_settings):
       try:
           title = remote.find_element_by_tag_name('title').get_property('text')
           title.decode('ascii')
+          if title != 'No title':
+          # If title does not throw an exception, then grab the screenshot
+            screenshot_path = ('./' + test_settings['mode'] + '/screenshots/' +
+                cache + '_' + site.replace(':','_').replace('/', '_') + '.png')
+            remote.save_screenshot(screenshot_path)
       except UnicodeDecodeError:
           title = 'title is not ascii-encoded'
       except UnicodeEncodeError:
@@ -147,6 +156,7 @@ def visit_sites(service, total, test_settings):
           title = 'no title because no such element'
       except WebDriverException:
           title = 'no title b/c of exception'
+      # Save screenshot only if title present to prevent hang in some cases
       remote.switch_to_window(beerstatus_tab)
     except TimeoutException as e:
         print("Selenium exception caught: %s" % str(e))
