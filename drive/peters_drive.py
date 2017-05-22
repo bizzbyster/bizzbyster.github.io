@@ -105,6 +105,7 @@ def visit_sites(service, total, test_settings):
   driver_options.add_argument('--blackbox-on-beer')
   driver_options.add_argument('--enable-crash-upload')
   driver_options.add_argument('--omaha-server-url=https://omaha.overnight.ihs.viasat.io')
+  driver_options.add_argument('--sparrow-enable-experimental=onhover-preconnect-subresources')
   driver_options.binary_location = binary_location
 
   capabilities = driver_options.to_capabilities()
