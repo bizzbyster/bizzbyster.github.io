@@ -93,6 +93,7 @@ def visit_sites(service, total, test_settings):
     driver_options.add_argument('--user-agent=' + chromiumlike_user_agent)
   else:
     driver_options.add_argument('--sparrow-force-fieldtrial')
+    driver_options.add_argument('--sparrow-enable-experimental=onhover-preconnect-subresources')
 
   test_label = (sys.platform + '-' + hex(get_mac()) + '-' + test_settings['mode'] +
     '-' + cache + '-' + test_settings['start_time'])
@@ -105,7 +106,6 @@ def visit_sites(service, total, test_settings):
   driver_options.add_argument('--blackbox-on-beer')
   driver_options.add_argument('--enable-crash-upload')
   driver_options.add_argument('--omaha-server-url=https://omaha.overnight.ihs.viasat.io')
-  driver_options.add_argument('--sparrow-enable-experimental=onhover-preconnect-subresources')
   driver_options.binary_location = binary_location
 
   capabilities = driver_options.to_capabilities()
