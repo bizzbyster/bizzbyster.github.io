@@ -53,6 +53,8 @@ except:
 USR_AGENT_OSX = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_WIN = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_LINUX = "??"
+WINDOWS_SPARROW_LOCATION = 'C:\\Users\\viasat\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe'
+MAC_SPARROW_LOCATION = '/Applications/Sparrow.app/Contents/MacOS/Sparrow'
 
 class SparrowDriver(object):
 
@@ -116,7 +118,7 @@ class SparrowDriver(object):
         # Discover chromium version and set user agent for use in chromiumlike mode
         if 'darwin' in sys.platform:
             self.binary_location = json_data.get('sparrow_location_mac',
-                '/Applications/Sparrow.app/Contents/MacOS/Sparrow')
+                MAC_SPARROW_LOCATION)
             p = subprocess.Popen([self.binary_location, '--version'], stdout=subprocess.PIPE)
             if p is None:
                 logging.info("Unable to open Sparrow at : %s" % self.binary_location)
@@ -127,14 +129,15 @@ class SparrowDriver(object):
 
         elif 'win' in sys.platform:
             self.binary_location = json_data.get('sparrow_location_windows',
-                'C:\\Users\\viasat\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe')
-            cmd = ['wmic datafile where name=%s get Version /value' % self.binary_location]
-            p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            if p is None:
-                logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
-                sys.exit(1)
-            out, err = p.communicate()
-            self.chromium_version = out.split('=')[1]
+                WINDOWS_SPARROW_LOCATION)
+            # cmd = ['wmic datafile where name=\"%s\" get Version /value' % self.binary_location]
+            # subprocess.call('dir', shell=True)
+            # p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+            # if p is None:
+            #     logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
+            #     sys.exit(1)
+            # out, err = p.communicate()
+            self.chromium_version = "56.0.2924.11760"
             self.user_agent = USR_AGENT_WIN % self.chromium_version
 
         self.sitelist_file = json_data.get('sitelist_file')
