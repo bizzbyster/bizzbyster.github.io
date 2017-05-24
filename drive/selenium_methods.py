@@ -327,7 +327,8 @@ def start_remote(cpe_location, driver_options, sparrow_controller=None):
             logging.exception("Selenium exception caught restarting the remote on %s" % cpe_location)
             logging.info("Trying again to restart the remote on %s.  Numtries = %s" % (cpe_location, str(numtries)))
             numtries += 1
-            sparrow_controller.stopSparrow()
+            if sparrow_controller is not None:
+                sparrow_controller.stopSparrow()
             continue
 
     return remote, beerstatus_tab, content_tab
