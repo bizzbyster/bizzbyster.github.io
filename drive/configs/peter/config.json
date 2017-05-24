@@ -7,7 +7,7 @@
     "alternate_warm_cold_cache": true,
     "test_label_prefix": "peter_drive",
     "sparrow_only_switches": [
-        "--hinting-scope=test-peter",
+        "--hinting-scope=test-peter-10",
         "--sparrow-enable-experimental=onhover-preconnect-subresources"
         ],
     "common_switches": [
