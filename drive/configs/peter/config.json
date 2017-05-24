@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/basic.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/https.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
@@ -7,7 +7,8 @@
     "alternate_warm_cold_cache": true,
     "test_label_prefix": "peter_drive",
     "sparrow_only_switches": [
-        "--hinting-scope=test-peter"
+        "--hinting-scope=test-peter",
+        "--sparrow-enable-experimental=onhover-preconnect-subresources"
         ],
     "common_switches": [
         "--enable-crash-upload",
