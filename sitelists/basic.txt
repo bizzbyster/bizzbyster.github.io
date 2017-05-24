@@ -1,3 +1,2 @@
-http://www.whoishostingthis.com/tools/user-agent/
 https://www.yahoo.com/
-http://www.reddit.com/
+http://bizzbyster.github.io/likelyneededbypages/critical.html
