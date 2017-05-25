@@ -80,6 +80,9 @@ class SparrowDriver(object):
         # Read the config file; set attributes
         self.json_config_parser(json_data)
 
+        # Get the start time for this run
+        self.test_start_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+
     def get_command_line(self):
         parser = argparse.ArgumentParser()
         parser.add_argument('-c', '--config', required=True, help='path to the configuration directory, which contains json config')
@@ -91,26 +94,26 @@ class SparrowDriver(object):
     def json_config_parser(self, json_data):
         '''Parses the config.json file and sets attributes that will eventually be cmd switches and options passed to selenium'''
 
-        self.logging_file = json_data.get('log_file', 'drive_log')
+        logging_file = json_data.get('log_file', 'drive_log')
         log_level = json_data.get('log_level', 'info')
 
         if log_level.lower() == 'debug':
-            self.logging_level = logging.DEBUG
+            logging_level = logging.DEBUG
         if log_level.lower() == 'warning':
-            self.logging_level = logging.WARNING
+            logging_level = logging.WARNING
         if log_level.lower() == 'info':
-            self.logging_level = logging.INFO
+            logging_level = logging.INFO
         if log_level.lower() == 'error':
-            self.logging_level = logging.ERROR
+            logging_level = logging.ERROR
 
         logging.getLogger('').handlers = []   #remove any existing handlers
 
-        logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s', filename=self.logging_file, level=self.logging_level)
+        logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s', filename=logging_file, level=logging_level)
 
         # set up logging to console
         if json_data.get('log_to_console', False):
             console = logging.StreamHandler()
-            console.setLevel(self.logging_level)
+            console.setLevel(logging_level)
             formatter = logging.Formatter('%(asctime)s %(levelname)s:%(message)s')
             console.setFormatter(formatter)
             logging.getLogger('').addHandler(console)
@@ -192,9 +195,8 @@ class SparrowDriver(object):
             logging.debug("Adding switch: %s" % switch)
 
         # Test label
-        test_start_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         test_label_entry = "--beer-test-label=%s-%s-%s-%s-%s-%s" % (self.test_label_prefix, self.chromium_version,
-                                                                    sys.platform, mode, cache_state, test_start_time)
+                                                                    sys.platform, mode, cache_state, self.test_start_time)
         driver_options.add_argument(test_label_entry)
         logging.info( test_label_entry )
 
@@ -262,6 +264,7 @@ class SparrowDriver(object):
                 if 'timeout_errors' not in self.stats:
                     self.stats['timeout_errors'] = 0
                 self.stats['timeout_errors'] += 1
+                remote.quit()
                 remote, beerstatus_tab, content_tab = selenium_methods.start_remote(self.service.service_url, driver_options)
                 continue
             except Exception as e:
@@ -270,6 +273,7 @@ class SparrowDriver(object):
                 if 'driver_exceptions' not in self.stats:
                     self.stats['driver_exceptions'] = 0
                 self.stats['driver_exceptions'] += 1
+                remote.quit()
                 remote, beerstatus_tab, content_tab = selenium_methods.start_remote(self.service.service_url, driver_options)
                 continue
 
