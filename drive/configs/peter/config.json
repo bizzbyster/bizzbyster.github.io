@@ -5,16 +5,13 @@
     "log_level": "info",
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": false,
+    "poll_download_speed": true,
     "test_label_prefix": "peter-longlist-noclear",
-    "sparrow_only_switches": [
-        "--sparrow-enable-experimental=onhover-preconnect-subresources"
-        ],
+    "sparrow_only_switches": [],
     "common_switches": [
-        "--enable-crash-upload",
         "--request-beer-ack",
-        "--omaha-server-url=https://omaha.overnight.ihs.viasat.io",
         "--blackbox-on-beer",
-        "--hinting-scope=test-peter"
+        "--hinting-scope=ear-test-drive"
         ],
-    "save_screenshots": true
+    "save_screenshots": false
 }
