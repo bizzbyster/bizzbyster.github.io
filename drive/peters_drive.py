@@ -80,7 +80,6 @@ class SparrowDriver(object):
         # Read the config file; set attributes
         self.json_config_parser(json_data)
 
-        # Get the start time for this run
         self.test_start_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
     def get_command_line(self):
@@ -140,7 +139,7 @@ class SparrowDriver(object):
             #     logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
             #     sys.exit(1)
             # out, err = p.communicate()
-            self.chromium_version = "56.0.2924.11760"
+            self.chromium_version = "56.0.2924.11795"
             self.user_agent = USR_AGENT_WIN % self.chromium_version
 
         self.sitelist_file = json_data.get('sitelist_file')
@@ -154,6 +153,10 @@ class SparrowDriver(object):
             logging.info("sitelist: %s not found, exiting" % self.sitelist_file)
             logging.info("Please modify the sitelist entry in %s" % self.json_config_file)
             sys.exit(1)
+
+        # Add fast.com to extract download speed.  Will be attached to the hyperlink template for analysis later.
+        if json_data.get('poll_download_speed'):
+            self.sitelist = ['https://fast.com/'] + self.sitelist
         logging.info("Using sitelist: %s" % self.sitelist_file)
 
         self.test_label_prefix = json_data.get('test_label_prefix')
@@ -198,7 +201,7 @@ class SparrowDriver(object):
         test_label_entry = "--beer-test-label=%s-%s-%s-%s-%s-%s" % (self.test_label_prefix, self.chromium_version,
                                                                     sys.platform, mode, cache_state, self.test_start_time)
         driver_options.add_argument(test_label_entry)
-        logging.info( test_label_entry )
+        logging.info(test_label_entry)
 
         driver_options.binary_location = self.binary_location
         driver_options.to_capabilities()['loggingPrefs'] = { 'browser':'ALL' }
@@ -219,6 +222,7 @@ class SparrowDriver(object):
             beer_status_dict[site] = None
 
         self.stats['sites'] = 0
+        self.download_speed = None
         for site in self.sitelist:
             if not site:
                 continue
@@ -231,7 +235,13 @@ class SparrowDriver(object):
             nav_start_time = time.time()
 
             try:
-                selenium_methods.load_on_hover(site, remote)
+                if site == 'https://fast.com/':
+                    selenium_methods.load_url(site, remote)
+                    self.download_speed = selenium_methods.extract_value_from_page(remote, 'speed-value')
+                    continue
+
+                else:
+                    selenium_methods.load_on_hover(site, remote, speed_value=self.download_speed)
 
                 try:
                     title = remote.find_element_by_tag_name('title').get_property('text')
@@ -367,6 +377,8 @@ class SparrowDriver(object):
                     if not self.alternate_sparrow_chromium:
                         chromiumlike_mode = False
                         mode = "sparrow"
+                    if not self.alternate_warm_cold_cache:
+                        clear_cache = False
                 except:
                     message_str = "Failed to load remote config at %s." % self.remote_config_file
                     logging.info(message_str)
