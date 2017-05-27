@@ -132,14 +132,14 @@ class SparrowDriver(object):
         elif 'win' in sys.platform:
             self.binary_location = json_data.get('sparrow_location_windows',
                 WINDOWS_SPARROW_LOCATION)
-            # cmd = ['wmic datafile where name=\"%s\" get Version /value' % self.binary_location]
+            #cmd = ['/cygdrive/c/Windows/System32/cmd.exe', 'wmic', 'datafile where name=\"%s\"' % self.binary_location, 'get Version \/value']
             # subprocess.call('dir', shell=True)
             # p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
             # if p is None:
             #     logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
             #     sys.exit(1)
             # out, err = p.communicate()
-            self.chromium_version = "56.0.2924.11795"
+            self.chromium_version = "56.0.2924.11820"
             self.user_agent = USR_AGENT_WIN % self.chromium_version
 
         self.sitelist_file = json_data.get('sitelist_file')
@@ -231,17 +231,18 @@ class SparrowDriver(object):
 
             logging.info(site)
 
-            remote.switch_to_window(content_tab)
-            nav_start_time = time.time()
-
             try:
+                remote.switch_to_window(content_tab)
+                nav_start_time = time.time()
+
                 if site == 'https://fast.com/':
                     selenium_methods.load_url(site, remote)
                     self.download_speed = selenium_methods.extract_value_from_page(remote, 'speed-value')
                     continue
 
                 else:
-                    selenium_methods.load_on_hover(site, remote, speed_value=self.download_speed)
+                    selenium_methods.load_on_hover(
+                        site, remote, speed_value=self.download_speed)
 
                 try:
                     title = remote.find_element_by_tag_name('title').get_property('text')
@@ -279,9 +280,13 @@ class SparrowDriver(object):
                 continue
             except Exception as e:
                 print("Selenium exception caught: %s" % str(e))
-                logging.error("Selenium exception caught: %s" % str(e))
+                logging.warning("Selenium exception caught: %s" % str(e))
                 if 'driver_exceptions' not in self.stats:
                     self.stats['driver_exceptions'] = 0
+                if 'session deleted because of page crash' in str(e):
+                    if 'tab_crash_exceptions' not in self.stats:
+                        self.stats['tab_crash_exceptions'] = 0
+                    self.stats['tab_crash_exceptions'] += 1
                 self.stats['driver_exceptions'] += 1
                 remote.quit()
                 remote, beerstatus_tab, content_tab = selenium_methods.start_remote(self.service.service_url, driver_options)
