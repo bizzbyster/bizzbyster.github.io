@@ -159,26 +159,6 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
     sparrow_controller = browser_dict.get('controller')
     cpe_ip = browser_dict.get('ip')
 
-    def load_url(url, remote):
-        try:
-            remote.get(url)
-        except TimeoutException as e:
-            logging.exception("Selenium exception caught.")
-
-        return
-
-    def load_url_and_crash(url, remote):
-
-        try:
-            remote.get(url)
-            # if we are here, we have not crash!
-            logging.info("Sparrow did not crash, error")
-            return False
-        except:
-            logging.info("Sparrow crashed as expected")
-
-        return True
-
     is_windows = op_sys == 'windows'
     sparrow_controller.stopSparrow()
 
@@ -293,9 +273,32 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
 
     return True
 
-def load_on_hover(url, remote):
+def load_on_hover(url, remote, speed_value=None):
+    # Add download speed to the hyperlink url for later analysis
+    hyperlink = HYPERLINK_TEMPLATE_URL + '?speed_test=%s' % speed_value  if speed_value else HYPERLINK_TEMPLATE_URL
+    remote.get(hyperlink)
+    # switch to beer status tab
+    remote.switch_to_window(remote.window_handles[0])
 
-    remote.get(HYPERLINK_TEMPLATE_URL)
+    # Wait for beer ack
+    num_tries = 20
+    trys = 0
+    beer_status_url = "sparrow://beerstatus/"
+    beer_status_dict = {}
+    beer_status_dict[hyperlink] = None
+    for i in range(num_tries):
+        load_url(beer_status_url, remote)
+        if check_beer_status(hyperlink, beer_status_dict, remote):
+            break
+
+        trys += 1
+        time.sleep(1)
+    if trys == num_tries:
+        logging.info("No beer ack recieved for %s" % beer_status_url)
+
+    # switch to content tab
+    remote.switch_to_window(remote.window_handles[1])
+
     element = remote.find_element_by_id("put_hyperlink_here")
     remote.execute_script(
       "arguments[0].innerHTML = '<a href=\"" + url + "\">" + url + "</a>';", element)
@@ -306,6 +309,33 @@ def load_on_hover(url, remote):
     time.sleep(HOVER_TIME)
     actions.click(link_element)
     actions.perform()
+
+def load_url(url, remote):
+    try:
+        remote.get(url)
+        if url == 'https://fast.com/':
+            time.sleep(20)
+
+    except TimeoutException as e:
+        logging.exception("Selenium exception caught.")
+
+    return
+
+def load_url_and_crash(url, remote):
+
+    try:
+        remote.get(url)
+        # if we are here, we have not crash!
+        logging.info("Sparrow did not crash, error")
+        return False
+    except:
+        logging.info("Sparrow crashed as expected")
+
+    return True
+
+def extract_value_from_page(remote, element_id):
+    element = remote.find_element_by_id(element_id)
+    return element.text
 
 def start_remote(cpe_location, driver_options, sparrow_controller=None):
 
