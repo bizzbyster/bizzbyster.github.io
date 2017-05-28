@@ -139,7 +139,7 @@ class SparrowDriver(object):
             #     logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
             #     sys.exit(1)
             # out, err = p.communicate()
-            self.chromium_version = "56.0.2924.11820"
+            self.chromium_version = "56.0.2924.11760"
             self.user_agent = USR_AGENT_WIN % self.chromium_version
 
         self.sitelist_file = json_data.get('sitelist_file')
@@ -241,8 +241,7 @@ class SparrowDriver(object):
                     continue
 
                 else:
-                    selenium_methods.load_on_hover(
-                        site, remote, speed_value=self.download_speed)
+                    selenium_methods.load_on_hover(site, remote, speed_value=self.download_speed)
 
                 try:
                     title = remote.find_element_by_tag_name('title').get_property('text')
