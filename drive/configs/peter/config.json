@@ -4,14 +4,15 @@
     "log_to_console": true,
     "log_level": "info",
     "alternate_sparrow_chromiumlike": true,
-    "alternate_warm_cold_cache": false,
-    "poll_download_speed": true,
-    "test_label_prefix": "peter-verylonglist",
+    "alternate_warm_cold_cache": true,
+    "poll_download_speed": false,
+    "test_label_prefix": "peter-mixlist-1",
     "sparrow_only_switches": [
         "--sparrow-enable-experimental=onhover-preconnect-subresources,do-not-cookiedefer-likely-static-resources"
         ],
     "common_switches": [
         "--request-beer-ack",
+        "--blackbox-on-beer",
         "--hinting-scope=peter-test-100"
         ],
     "save_screenshots": false
