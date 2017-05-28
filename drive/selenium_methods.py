@@ -276,29 +276,8 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
 def load_on_hover(url, remote, speed_value=None):
     # Add download speed to the hyperlink url for later analysis
     hyperlink = HYPERLINK_TEMPLATE_URL + '?speed_test=%s' % speed_value  if speed_value else HYPERLINK_TEMPLATE_URL
+
     remote.get(hyperlink)
-    # switch to beer status tab
-    remote.switch_to_window(remote.window_handles[0])
-
-    # Wait for beer ack
-    num_tries = 20
-    trys = 0
-    beer_status_url = "sparrow://beerstatus/"
-    beer_status_dict = {}
-    beer_status_dict[hyperlink] = None
-    for i in range(num_tries):
-        load_url(beer_status_url, remote)
-        if check_beer_status(hyperlink, beer_status_dict, remote):
-            break
-
-        trys += 1
-        time.sleep(1)
-    if trys == num_tries:
-        logging.info("No beer ack recieved for %s" % beer_status_url)
-
-    # switch to content tab
-    remote.switch_to_window(remote.window_handles[1])
-
     element = remote.find_element_by_id("put_hyperlink_here")
     remote.execute_script(
       "arguments[0].innerHTML = '<a href=\"" + url + "\">" + url + "</a>';", element)
