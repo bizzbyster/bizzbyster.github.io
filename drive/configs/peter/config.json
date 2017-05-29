@@ -6,9 +6,9 @@
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "peter-mixlist-1",
+    "test_label_prefix": "peter-mixlist-2",
     "sparrow_only_switches": [
-        "--sparrow-enable-experimental=onhover-preconnect-subresources,do-not-cookiedefer-likely-static-resources"
+        "--sparrow-enable-experimental=onhover-preconnect-subresources"
         ],
     "common_switches": [
         "--request-beer-ack",
