@@ -6,14 +6,14 @@
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "peter-ublock",
+    "test_label_prefix": "peter-ublockpreconnecting",
     "sparrow_only_switches": [
         "--sparrow-enable-experimental=onhover-preconnect-subresources"
         ],
     "common_switches": [
         "--request-beer-ack",
         "--blackbox-on-beer",
-        "--hinting-scope=peter-test-101"
+        "--hinting-scope=test-peter-101"
         ],
     "save_screenshots": false
 }
