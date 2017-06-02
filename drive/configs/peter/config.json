@@ -8,7 +8,7 @@
     "poll_download_speed": false,
     "test_label_prefix": "peter-ublockpreconnecting",
     "sparrow_only_switches": [
-        "--sparrow-enable-experimental=onhover-preconnect-subresources"
+        "--sparrow-enable-experimental=hover-root-prefetch"
         ],
     "common_switches": [
         "--request-beer-ack",
