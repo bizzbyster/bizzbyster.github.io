@@ -366,8 +366,7 @@ class SparrowDriver(object):
 
         browsing_data_dir = 'Default'
         cache_dir = 'Default/Cache'
-        #cache_files = ['Cookies', 'Cookies-journal', 'History', 'History-journal']
-        cache_files = []
+        cache_files = ['Cookies', 'Cookies-journal', 'History', 'History-journal']
         while True:
             if clear_cache:
                 user_data = self.chromiumlike_user_data_dir if chromiumlike_mode else self.sparrow_user_data_dir
@@ -436,7 +435,8 @@ class SparrowDriver(object):
             for fl in files_list:
                 fl_path = os.path.join(browsing_data_directory, fl)
                 if os.path.isfile(fl_path):
-                    os.remove(fl)
+                    logging.info("Removing file %s now.." % fl_path)
+                    os.remove(fl_path)
 
     def clean_chromedriver_process(self):
         '''
