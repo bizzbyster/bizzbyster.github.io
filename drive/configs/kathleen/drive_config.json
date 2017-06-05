@@ -14,5 +14,6 @@
         "--request-beer-ack",
         "--hinting-scope=test-home-tester"
         ],
-    "save_screenshots": false
+    "save_screenshots": false,
+    "ublock_path": "ublock_origin.crx"
 }
