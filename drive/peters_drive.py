@@ -364,10 +364,10 @@ class SparrowDriver(object):
         chromiumlike_mode = False
         mode = 'sparrow'
 
-        browsing_data_dir = '/Default'
-        cache_dir = '/Default/Cache'
-        cache_files = ['Cookies', 'Cookies-journal', 'History', 'History-journal']
-
+        browsing_data_dir = 'Default'
+        cache_dir = 'Default/Cache'
+        #cache_files = ['Cookies', 'Cookies-journal', 'History', 'History-journal']
+        cache_files = []
         while True:
             if clear_cache:
                 user_data = self.chromiumlike_user_data_dir if chromiumlike_mode else self.sparrow_user_data_dir
