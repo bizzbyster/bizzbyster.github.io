@@ -395,3 +395,4 @@ def check_beer_status(url, beer_status_dict, remote):
             continue
 
     return False
+
