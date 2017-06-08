@@ -6,9 +6,9 @@
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "peter-ublock-rootprefetch",
+    "test_label_prefix": "peter-ublock-experimental",
     "sparrow_only_switches": [
-        "--sparrow-enable-experimental=hover-root-prefetch"
+        "--sparrow-enable-experimental=hover-root-prefetch,onhover-preconnect-subresources,do-not-cookiedefer-likely-static-resources"
         ],
     "common_switches": [
         "--request-beer-ack",
