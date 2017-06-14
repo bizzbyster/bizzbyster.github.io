@@ -31,7 +31,6 @@ http://finance.yahoo.com/
 http://www.linkedin.com/
 https://www.linkedin.com/home?trk=nav_responsive_tab_home
 http://www.drudgereport.com/
-http://www.drudgereport.com/wx.htm8
 https://www.google.co.uk/
 https://www.google.co.uk/search?espv=2&q=how+to+annotate+a+folder+list+in+windows&spell=1&sa=X&ved=0ahUKEwicha3jvt3SAhXqKsAKHQt2AhgQvwUIGSgA&biw=1366&bih=648
 https://www.washingtonpost.com/
