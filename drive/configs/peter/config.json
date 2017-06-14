@@ -13,7 +13,7 @@
     "common_switches": [
         "--request-beer-ack",
         "--blackbox-on-beer",
-        "--hinting-scope=test-home-tester-1"
+        "--hinting-scope=test-home-tester-2"
         ],
     "save_screenshots": false
 }
