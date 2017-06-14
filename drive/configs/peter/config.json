@@ -8,7 +8,7 @@
     "poll_download_speed": false,
     "test_label_prefix": "peter-ublock-viewportimmediate-2",
     "sparrow_only_switches": [
-        "--sparrow-enable-experimental=hover-root-prefetch,onhover-preconnect-subresources,prefetch-viewport-immediate,do-not-cookiedefer-likely-static-resources"
+        "--sparrow-enable-experimental=hover-root-prefetch,onhover-preconnect-subresources,prefetch-viewport-immediate"
         ],
     "common_switches": [
         "--request-beer-ack",
