@@ -6,7 +6,7 @@
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "peter-milestoneend-3",
+    "test_label_prefix": "peter-nomozilla",
     "sparrow_only_switches": [
         "--sparrow-enable-experimental=hover-root-prefetch,onhover-preconnect-subresources,prefetch-viewport-immediate"
         ],
