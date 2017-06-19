@@ -10,7 +10,7 @@
     "sparrow_only_switches": [],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester"
+        "--hinting-scope=test-home-tester-1"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
