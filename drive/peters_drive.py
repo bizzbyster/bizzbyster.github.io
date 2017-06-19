@@ -12,6 +12,7 @@ How:
      2) your version of config.json
      3) you can put the chromedriver.exe in here for convenience
      4) you can put your sitelist.txt file here for convenience, or you can point to a remote sitelist in the config
+     5) you can put ublock_origin.crx here if you want to use ublock. It can be found in IHS/automation/tools
 
   The json config file contains all information for the drive.py
 
@@ -53,7 +54,7 @@ except:
 USR_AGENT_OSX = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_WIN = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_LINUX = "??"
-WINDOWS_SPARROW_LOCATION = 'C:\\Users\\viasat\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe'
+WINDOWS_SPARROW_LOCATION = 'C:\\Users\\%s\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe'
 MAC_SPARROW_LOCATION = '/Applications/Sparrow.app/Contents/MacOS/Sparrow'
 
 class SparrowDriver(object):
@@ -72,8 +73,7 @@ class SparrowDriver(object):
         # Check for a remote config file
         self.remote_config_file = json_data.get('remote_config_file_location')
         if self.remote_config_file:
-            print "Using remote config file at: %s" % self.remote_config_file
-            json_data = json.load(urllib2.urlopen(self.remote_config_file))
+            json_data = self.load_remote_config()
 
         self.service = service.Service('chromedriver')
 
@@ -82,13 +82,30 @@ class SparrowDriver(object):
 
         self.test_start_time = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
+    def load_remote_config(self):
+
+        print "Using remote config file at: %s" % self.remote_config_file
+        json_data = json.load(urllib2.urlopen(self.remote_config_file))
+
+        # Check the local config for any override values. test_label_prefix is a good example...
+        with open(self.json_config_file) as fl:
+            possible_overrides = json.load(fl)
+
+        for key, value in possible_overrides.iteritems():
+            if key != 'remote_config_file_location':
+                json_data[key] = value
+
+        return json_data
+
     def get_command_line(self):
         parser = argparse.ArgumentParser()
         parser.add_argument('-c', '--config', required=True, help='path to the configuration directory, which contains json config')
+        parser.add_argument('-u', '--system_user', default='viasat', help='username associated with the user account on the laptop. Windows only.')
 
         args = parser.parse_args()
 
         self.json_config_file = args.config
+        self.username = args.system_user
 
     def json_config_parser(self, json_data):
         '''Parses the config.json file and sets attributes that will eventually be cmd switches and options passed to selenium'''
@@ -129,17 +146,22 @@ class SparrowDriver(object):
             self.chromium_version = out.strip().split()[1]
             self.user_agent = USR_AGENT_OSX % self.chromium_version
 
-        elif 'win' in sys.platform:
+        elif 'win' in sys.platform.lower():
             self.binary_location = json_data.get('sparrow_location_windows',
-                WINDOWS_SPARROW_LOCATION)
-            #cmd = ['/cygdrive/c/Windows/System32/cmd.exe', 'wmic', 'datafile where name=\"%s\"' % self.binary_location, 'get Version \/value']
-            # subprocess.call('dir', shell=True)
-            # p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
-            # if p is None:
-            #     logging.info( "Unable to open Sparrow at : %s" % self.binary_location)
-            #     sys.exit(1)
-            # out, err = p.communicate()
-            self.chromium_version = "56.0.2924.11760"
+                WINDOWS_SPARROW_LOCATION % self.username)
+
+            if 'cygwin' in sys.platform.lower():
+                cmd = ['wmic', 'datafile', 'where', r'name="%s"' % self.binary_location.replace('\\', '\\\\'), 'get', 'Version']
+                p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            else:
+                cmd = r'wmic datafile where name="%s" get Version' % self.binary_location.replace('\\', '\\\\')
+                p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+            if p is None:
+                logging.info("Unable to open Sparrow at : %s" % self.binary_location)
+                sys.exit(1)
+            out, err = p.communicate()
+            self.chromium_version = out.split()[1]
             self.user_agent = USR_AGENT_WIN % self.chromium_version
 
         self.sitelist_file = json_data.get('sitelist_file')
@@ -171,6 +193,7 @@ class SparrowDriver(object):
         self.sparrow_user_data_dir = os.path.dirname(os.path.realpath(__file__)) + '/sparrow_user_data'
 
         self.save_screenshots = json_data.get('save_screenshots', False)
+        self.ublock_path = json_data.get('ublock_path')
 
     def add_options(self, chromiumlike, cache_state):
         ''' Sets a bunch of cmd switches and options passed to selenium'''
@@ -197,6 +220,13 @@ class SparrowDriver(object):
             driver_options.add_argument(switch)
             logging.debug("Adding switch: %s" % switch)
 
+        if self.ublock_path:
+            if not os.path.exists(self.ublock_path):
+                print("Error, ublock crx file not found.")
+                sys.exit(1)
+
+            driver_options.add_extension(self.ublock_path)
+
         # Test label
         test_label_entry = "--beer-test-label=%s-%s-%s-%s-%s-%s" % (self.test_label_prefix, self.chromium_version,
                                                                     sys.platform, mode, cache_state, self.test_start_time)
@@ -211,6 +241,7 @@ class SparrowDriver(object):
     def visit_sites(self, chromiumlike, cache_state):
 
         driver_options = self.add_options(chromiumlike, cache_state)
+        selenium_methods.stop_sparrow()
 
         # launch sparrow and initial tabs
         remote, beerstatus_tab, content_tab = selenium_methods.start_remote(self.service.service_url, driver_options)
@@ -332,12 +363,18 @@ class SparrowDriver(object):
         clear_cache = True
         chromiumlike_mode = False
         mode = 'sparrow'
+
+        browsing_data_dir = 'Default'
+        cache_dir = 'Default/Cache'
+        cache_files = ['Cookies', 'Cookies-journal', 'History', 'History-journal']
         while True:
             if clear_cache:
                 user_data = self.chromiumlike_user_data_dir if chromiumlike_mode else self.sparrow_user_data_dir
-                logging.info("Removing user data dir: %s " % user_data)
-                shutil.rmtree(user_data, ignore_errors=True)
+                self.clear_cache(cache_directory=os.path.join(user_data, cache_dir),
+                                 browsing_data_directory=os.path.join(user_data, browsing_data_dir),
+                                 files_list=cache_files)
 
+                logging.info("Starting cold cache run with %s now" % mode)
                 self.visit_sites(chromiumlike_mode, "cold")
 
                 if self.alternate_sparrow_chromium:
@@ -345,8 +382,9 @@ class SparrowDriver(object):
                     mode = "chromiumlike" if chromiumlike_mode else "sparrow"
 
                     user_data = self.chromiumlike_user_data_dir if chromiumlike_mode else self.sparrow_user_data_dir
-                    logging.info("Removing user data dir: %s now" % user_data)
-                    shutil.rmtree(user_data, ignore_errors=True)
+                    self.clear_cache(cache_directory=os.path.join(user_data, cache_dir),
+                                     browsing_data_directory=os.path.join(user_data, browsing_data_dir),
+                                     files_list=cache_files)
 
                     logging.info("Starting cold cache run with %s now" % mode)
                     self.visit_sites(chromiumlike_mode, "cold")
@@ -374,7 +412,7 @@ class SparrowDriver(object):
                 message_str = "Loading remote config file again from %s" % self.remote_config_file
                 logging.info(message_str)
                 try:
-                    json_data = json.load(urllib2.urlopen(self.remote_config_file))
+                    json_data = self.load_remote_config()
                     logging.info(json_data)
                     # Set new config values to be run till next iteration
                     self.json_config_parser(json_data)
@@ -387,6 +425,18 @@ class SparrowDriver(object):
                     message_str = "Failed to load remote config at %s." % self.remote_config_file
                     logging.info(message_str)
 
+    def clear_cache(self, cache_directory, browsing_data_directory=None, files_list=[]):
+
+        logging.info("Removing cache directory %s now.." % cache_directory)
+        shutil.rmtree(cache_directory, ignore_errors=True)
+
+        if files_list and browsing_data_directory:
+            logging.info("Removing cache files %s from %s now.." % (str(files_list), browsing_data_directory))
+            for fl in files_list:
+                fl_path = os.path.join(browsing_data_directory, fl)
+                if os.path.isfile(fl_path):
+                    logging.info("Removing file %s now.." % fl_path)
+                    os.remove(fl_path)
 
     def clean_chromedriver_process(self):
         '''
@@ -400,6 +450,7 @@ class SparrowDriver(object):
         for proc in psutil.process_iter():
             if proc.name() == 'chromedriver.exe':
                 proc.kill()
+
 
 if __name__ == '__main__':
     sdrv = SparrowDriver()
