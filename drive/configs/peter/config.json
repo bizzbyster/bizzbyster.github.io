@@ -11,7 +11,9 @@
         ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester-1"
+        "--hinting-scope=test-home-tester-1",
+        "--blackbox-on-beer",
+        "--omaha-server-url=https://omaha.overnight.ihs.viasat.io"
         ],
     "save_screenshots": false
 }
