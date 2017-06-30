@@ -7,11 +7,9 @@
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
     "test_label_prefix": "tim-chromiumlike-noublock",
-    "sparrow_only_switches": [
-        ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester-1",
+        "--hinting-scope=test-home-tester-1"
         ],
     "save_screenshots": false
 }
