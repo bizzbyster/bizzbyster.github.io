@@ -6,8 +6,8 @@
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_not_cookie_defer_consistet",
-    "sparrow_only_switches": ["--sparrow-enable-experimental=do-not-cookiedefer-consistent"],
+    "test_label_prefix": "kathleen_do_not_cookiedefer_root_redirect_chain",
+    "sparrow_only_switches": ["--sparrow-enable-experimental=do-not-cookiedefer-root-redirect-chain"],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester"
