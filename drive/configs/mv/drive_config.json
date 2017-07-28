@@ -1,0 +1,17 @@
+
+{
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "log_file": "drive_log",
+    "log_to_console": true,
+    "log_level": "info",
+    "alternate_sparrow_chromiumlike": true,
+    "alternate_warm_cold_cache": true,
+    "poll_download_speed": false,
+    "test_label_prefix": "mv_baseline",
+    "sparrow_only_switches": [],
+    "common_switches": [
+        "--request-beer-ack",
+        "--hinting-scope=test-home-tester"
+        ],
+    "save_screenshots": false,
+    "ublock_path": "ublock_origin.crx"
