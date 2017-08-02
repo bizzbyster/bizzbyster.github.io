@@ -9,7 +9,8 @@
     "test_label_prefix": "tim-chromiumlike-noublock",
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester-1"
+        "--hinting-scope=test-home-tester-1",
+        "--blackbox-on-beer"
         ],
     "save_screenshots": false
 }
