@@ -13,7 +13,7 @@
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-         "--blackbox-on-beer",
+         "--blackbox-on-beer"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
