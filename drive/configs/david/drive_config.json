@@ -9,7 +9,7 @@
     "poll_download_speed": false,
     "test_label_prefix": "david_ublock_experiment",
     "sparrow_only_switches": [
-        "--sparrow-enable-experimental=do-not-ublock-prefetch-requests,do-not-ublock-on-headers-received"
+        "--sparrow-enable-experimental=do-not-ublock-prefetch-requests"
     ],
     "common_switches": [
         "--request-beer-ack",
