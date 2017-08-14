@@ -7,7 +7,7 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_ublock_experiment",
+    "test_label_prefix": "ken_ublockprefetch_experiment",
     "sparrow_only_switches": [
         "--sparrow-enable-experimental=do-not-ublock-prefetch-requests"
     ],
