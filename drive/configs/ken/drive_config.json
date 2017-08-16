@@ -7,8 +7,10 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_baseline",
-    "sparrow_only_switches": [],
+    "test_label_prefix": "ken_both_ublock_exp_features",
+    "sparrow_only_switches": [
+        "--sparrow-enable-experimental=do-not-ublock-prefetch-requests,do-not-ublock-on-headers-received"
+    ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester-1"
