@@ -7,13 +7,12 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_both_ublock_exp_features",
-    "sparrow_only_switches": [
-        "--sparrow-enable-experimental=do-not-ublock-prefetch-requests,do-not-ublock-on-headers-received"
-    ],
+    "test_label_prefix": "ken_quic",
+    "sparrow_only_switches": [],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester-1"
+        "--hinting-scope=test-home-tester-1",
+        "--enable-quic"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
