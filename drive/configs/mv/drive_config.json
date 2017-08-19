@@ -8,7 +8,7 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_quick",
+    "test_label_prefix": "mv_quic",
     "sparrow_only_switches": [
     ],
     "common_switches": [
