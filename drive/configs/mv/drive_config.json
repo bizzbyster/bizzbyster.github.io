@@ -8,14 +8,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_quic",
+    "test_label_prefix": "mv_preconnect_10",
     "sparrow_only_switches": [
+        "--ihs-preconnect-max=10"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-         "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/",
-         "--enable-quic"
+         "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
