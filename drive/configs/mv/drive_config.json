@@ -1,4 +1,3 @@
-
 {
     "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
     "log_file": "drive_log",
@@ -8,14 +7,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_preconnect_10",
+    "test_label_prefix": "mv_disable_on_hover_preconnect_subresources",
     "sparrow_only_switches": [
-        "--ihs-preconnect-max=10"
+        "--sparrow-disable=onhover-preconnect-subresources"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-         "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
+        "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
