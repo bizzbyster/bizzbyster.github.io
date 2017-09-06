@@ -7,10 +7,8 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "david_disable_on_hover_preconnect_subresources",
-    "sparrow_only_switches": [
-        "--sparrow-disable=onhover-preconnect-subresources"
-    ],
+    "test_label_prefix": "david_baseline",
+    "sparrow_only_switches": [],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester"
