@@ -1,0 +1,36 @@
+Hi
+I understand you are going to switch Sparrow browsing to one of our development hinting service load balancers. Those use a certificate issued by example.com, that CA Root certificate is not trusted because it is not in the Trusted Root Certification Authorities store.
+ 
+To install that cert as trusted, please follow these instructions. Let me know if you have any questions.
+ 
+1.       Using Notebook save the certificate below as ‘example.cer’ on your desktop. Be sure to include the “BEGIN CERTIFICATE” and “END CERTIFICATE” lines in their entirety.
+2.       Right click on that file, select “Install certificate”
+3.       Select “Place all certificates in the following store” --> “Trusted Root Certification Authorities”
+4.       Restart sparrow, verify the import by navigating to https://mockprod-purpleempgw-399080899.us-east-1.elb.amazonaws.com/
+ 
+ 
+
+ 
+ 
+-----BEGIN CERTIFICATE-----
+MIIDrDCCApSgAwIBAgIJAOHVVpv/mVr5MA0GCSqGSIb3DQEBCwUAMGsxCzAJBgNV
+BAYTAlVTMRYwFAYDVQQIDA1NYXNzYWNodXNldHRzMQ8wDQYDVQQHDAZCb3N0b24x
+DzANBgNVBAoMBlZpYXNhdDEMMAoGA1UECwwDSUhTMRQwEgYDVQQDDAtleGFtcGxl
+LmNvbTAeFw0xNzA2MTUxNjE0MTZaFw0yMDA0MDQxNjE0MTZaMGsxCzAJBgNVBAYT
+AlVTMRYwFAYDVQQIDA1NYXNzYWNodXNldHRzMQ8wDQYDVQQHDAZCb3N0b24xDzAN
+BgNVBAoMBlZpYXNhdDEMMAoGA1UECwwDSUhTMRQwEgYDVQQDDAtleGFtcGxlLmNv
+bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAORTTrkMh5Y2eNNwadnw
+sRK7P1BmakujXv2gePKDe7I8KseaaXX6Z4dRjKt9Clb4z0zIjC0mykKxR/DiEa+1
+At3ZyMYTnjkQeECnoSu1dElW0oGASx8FWl69w/bGIWqaoCLlwed2msxfLKc3V87P
+YKz77yqOnVktrXeo6WuuBu3n8+KjNHqPixsRt55kr2UQdyNEaX8tXBvcA7Bn2WCg
+qSMW/E85AWE/rOVjDhDWd6GDMxJn0DbD1YUoQypTBFllp6FpROSfOhRdBl5NMpVH
+Rgf/OlSV596ArQuViMjz5GG3facDK70nDdaUlIYkjkC2iFbsD4t/BN5fPmwhYxXS
+B50CAwEAAaNTMFEwHQYDVR0OBBYEFJsiC3ASX3/1C2C2gXerBrHY8k3KMB8GA1Ud
+IwQYMBaAFJsiC3ASX3/1C2C2gXerBrHY8k3KMA8GA1UdEwEB/wQFMAMBAf8wDQYJ
+KoZIhvcNAQELBQADggEBAG1AOBCUxjlkIpzFbAxyobDf7/wbEzpcPiV5Fe3BgVPR
+w5+NJw/wBQGuNHx9lSUc/GIqO6Oosd8Y0rTJ08xsFDe7GkELCyWMxu4lCQ1IepbG
+4vBAjFPYEG9BbkNfa4nYHejEQatatlIW6xTzdfGXJXAbxazOJfU5oND58QH97zSs
+2bI3fLvTty16dzABj2kKIX7Ul3cnVuQ4eSo0OmgxYwkxPVRilxVy4HHrB+Yi5Azg
+w6Yqh77Lk7BaCIF4AtSnfSlEStsWBSM3Tdg6MPuGsrTZabtYTtsdknX4Er/Dvbcz
+EiK0jTc4489YSHyQDEpcZKN2cZXXwBu6JJvYMHNiHNQ=
+-----END CERTIFICATE-----
