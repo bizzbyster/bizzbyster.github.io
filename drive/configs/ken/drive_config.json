@@ -7,11 +7,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_baseline",
-    "sparrow_only_switches": [],
+    "test_label_prefix": "ken_purpleemp",
+    "sparrow_only_switches": [
+        "--ihs-hint-url=wss://mockprod-purpleempGW-399080899.us-east-1.elb.amazonaws.com/hint"
+    ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester"
+        "--hinting-scope=test-home-tester",
+        "--ihs-beer-url=wss://mockprod-purpleempGW-399080899.us-east-1.elb.amazonaws.com/feedback"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
