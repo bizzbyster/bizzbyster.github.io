@@ -14,7 +14,8 @@
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mockprod-icaempcap200GW-1926075523.us-east-1.elb.amazonaws.com/feedback"
+        "--ihs-beer-url=wss://mockprod-icaempcap200GW-1926075523.us-east-1.elb.amazonaws.com/feedback",
+        "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
