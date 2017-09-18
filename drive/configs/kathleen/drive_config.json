@@ -7,13 +7,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_baseline",
+    "test_label_prefix": "kathleen_icaemp200",
     "sparrow_only_switches": [
+        "--ihs-hint-url=wss://mockprod-icaempGW-1220390577.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
+        "--ihs-beer-url=wss://mockprod-icaempGW-1220390577.us-east-1.elb.amazonaws.com/feedback"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
