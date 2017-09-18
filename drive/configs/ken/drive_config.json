@@ -7,14 +7,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_purpleemp_t2small",
+    "test_label_prefix": "ken_icaempcap200",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mockprod-simusertestGW-213245949.us-east-1.elb.amazonaws.com/hint"
+        "--ihs-hint-url=wss://mockprod-icaempcap200GW-1926075523.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mockprod-simusertestGW-213245949.us-east-1.elb.amazonaws.com/feedback"
+        "--ihs-beer-url=wss://mockprod-icaempcap200GW-1926075523.us-east-1.elb.amazonaws.com/feedback"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
