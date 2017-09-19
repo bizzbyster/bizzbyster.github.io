@@ -7,14 +7,12 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_spdy",
+    "test_label_prefix": "mv_baseline",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mmcmahon-spdy3GW-796229408.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mmcmahon-spdy3GW-796229408.us-east-1.elb.amazonaws.com/feedback",
         "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
