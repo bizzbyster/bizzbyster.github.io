@@ -7,14 +7,14 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_icaemp1GB50GB200",
+    "test_label_prefix": "kathleen_ierh200",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mockprod-icaempGW-1220390577.us-east-1.elb.amazonaws.com/hint"
+        "--ihs-hint-url=wss://mockprod-ierh200GW-1480445772.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mockprod-icaempGW-1220390577.us-east-1.elb.amazonaws.com/feedback"
+        "--ihs-beer-url=wss://mockprod-ierh200GW-1480445772.us-east-1.elb.amazonaws.com/feedback"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
