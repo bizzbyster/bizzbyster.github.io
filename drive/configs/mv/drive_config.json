@@ -9,6 +9,7 @@
     "poll_download_speed": false,
     "test_label_prefix": "mv_baseline",
     "sparrow_only_switches": [
+        "--ihs-preconnect-max=5"
     ],
     "common_switches": [
         "--request-beer-ack",
