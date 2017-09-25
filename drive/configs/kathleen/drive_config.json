@@ -7,13 +7,12 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_baseline",
+    "test_label_prefix": "kathleen_no_ublock",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester"
         ],
-    "save_screenshots": false,
-    "ublock_path": "ublock_origin.crx"
+    "save_screenshots": false
 }
