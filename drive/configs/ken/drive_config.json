@@ -9,10 +9,13 @@
     "poll_download_speed": false,
     "test_label_prefix": "ken_no_ublock",
     "sparrow_only_switches": [
+        "--ihs-hint-url=wss://mockprod-ienl0200GW-1419740077.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester"
+        "--hinting-scope=test-home-tester",
+        "--ihs-beer-url=wss://mockprod-ienl0200GW-1419740077.us-east-1.elb.amazonaws.com/feedback"
         ],
-    "save_screenshots": false
+    "save_screenshots": false,
+    "ublock_path": "ublock_origin.crx"
 }
