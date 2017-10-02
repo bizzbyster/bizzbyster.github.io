@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/from_crawler.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
@@ -7,7 +7,7 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_ienl0200",
+    "test_label_prefix": "kathleen_ienl0200_from_crawler",
     "sparrow_only_switches": [
         "--ihs-hint-url=wss://mockprod-ienl0200GW-1419740077.us-east-1.elb.amazonaws.com/hint"
     ],
