@@ -1,20 +1,18 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/from_crawler.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
-    "alternate_sparrow_chromiumlike": true,
+    "alternate_sparrow_chromiumlike": false,
     "percent_clicks_on_hover": 90,
-    "alternate_warm_cold_cache": true,
+    "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "kathleen_ienl0200",
+    "test_label_prefix": "kathleen_from_crawler",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mockprod-ienl0200GW-1419740077.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mockprod-ienl0200GW-1419740077.us-east-1.elb.amazonaws.com/feedback"
+        "--hinting-scope=crawler-test-1"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
