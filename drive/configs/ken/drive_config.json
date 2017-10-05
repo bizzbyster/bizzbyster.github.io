@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/tfrom_crawler.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/from_crawler.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
