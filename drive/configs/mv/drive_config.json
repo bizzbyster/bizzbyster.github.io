@@ -7,7 +7,7 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_disable_onhover_preconnect",
+    "test_label_prefix": "mv_disable_onhover_preconnect_subresources",
     "sparrow_only_switches": [
         "--sparrow-disable=onhover-preconnect-subresources"
     ],
