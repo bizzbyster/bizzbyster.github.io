@@ -12,7 +12,7 @@
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=crawler-test-2"
+        "--hinting-scope=test-crawler-3"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
