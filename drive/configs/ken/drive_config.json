@@ -7,12 +7,12 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_from_crawler",
+    "test_label_prefix": "ken_from_crawler_2",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=crawler-test-2"
+        "--hinting-scope=test-crawler-3"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
