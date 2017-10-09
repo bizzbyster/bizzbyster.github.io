@@ -3,16 +3,16 @@
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
-    "alternate_sparrow_chromiumlike": false,
+    "alternate_sparrow_chromiumlike": true,
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_from_crawler_2",
+    "test_label_prefix": "ken_from_crawler_3",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-crawler-3"
+        "--hinting-scope=test-crawler-4"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
