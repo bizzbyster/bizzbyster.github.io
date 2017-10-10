@@ -214,12 +214,11 @@ class SparrowDriver(object):
             driver_options.add_argument('--sparrow-force-fieldtrial')
             driver_options.add_argument('--user-data-dir=%s' % self.sparrow_user_data_dir)
             for switch in self.sparrow_only_switches:
-                if switch.split('=')[0] == '--hinting-scope' and self.fresh_models:
+                if self.fresh_models and switch.split('=')[0].strip() == '--hinting-scope':
                     switch += '-%s' % time.time()
                 driver_options.add_argument(switch)
                 logging.debug("Adding switch to sparrow only: %s" % switch)
-        
-
+                
         # Passed from config file
         for switch in self.common_switches:
             driver_options.add_argument(switch)
