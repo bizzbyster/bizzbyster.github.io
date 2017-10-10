@@ -215,7 +215,7 @@ class SparrowDriver(object):
             driver_options.add_argument('--user-data-dir=%s' % self.sparrow_user_data_dir)
             for switch in self.sparrow_only_switches:
                 if self.fresh_models and switch.split('=')[0].strip() == '--hinting-scope':
-                    switch += '-%s' % time.time()
+                    switch += '-%s' % int(time.time())
                 driver_options.add_argument(switch)
                 logging.debug("Adding switch to sparrow only: %s" % switch)
                 
