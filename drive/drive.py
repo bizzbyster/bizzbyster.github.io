@@ -194,6 +194,8 @@ class SparrowDriver(object):
 
         self.save_screenshots = json_data.get('save_screenshots', False)
         self.ublock_path = json_data.get('ublock_path')
+        
+        self.fresh_models = json_data.get('fresh_models', False)
 
     def add_options(self, chromiumlike, cache_state):
         ''' Sets a bunch of cmd switches and options passed to selenium'''
@@ -212,9 +214,11 @@ class SparrowDriver(object):
             driver_options.add_argument('--sparrow-force-fieldtrial')
             driver_options.add_argument('--user-data-dir=%s' % self.sparrow_user_data_dir)
             for switch in self.sparrow_only_switches:
+                if self.fresh_models and switch.split('=')[0].strip() == '--hinting-scope':
+                    switch += '-%s' % int(time.time())
                 driver_options.add_argument(switch)
                 logging.debug("Adding switch to sparrow only: %s" % switch)
-
+                
         # Passed from config file
         for switch in self.common_switches:
             driver_options.add_argument(switch)
