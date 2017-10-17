@@ -7,13 +7,13 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_dap_mode",
+    "test_label_prefix": "mv_abp_withmodel",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester"
+        "--hinting-scope=test-abp-tester"
         ],
     "save_screenshots": false,
-    "ublock_path": "ublock_origin.crx"
+    "ublock_path": "Adblock-Plus_v1.12.4.crx"
 }
