@@ -9,12 +9,10 @@
     "poll_download_speed": false,
     "test_label_prefix": "peter_cable_baseline",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mockprod-purpleempGW-399080899.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester-1",
-        "--ihs-beer-url=wss://mockprod-purpleempGW-399080899.us-east-1.elb.amazonaws.com/feedback"
+        "--hinting-scope=test-home-tester"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
