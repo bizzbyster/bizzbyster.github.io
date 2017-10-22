@@ -3,7 +3,7 @@
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
-    "alternate_sparrow_chromiumlike": false,
+    "alternate_sparrow_chromiumlike": true,
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
