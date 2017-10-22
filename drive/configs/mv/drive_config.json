@@ -12,7 +12,7 @@
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-home-tester",
+        "--hinting-scope=test-home-tester-viewport",
         "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
