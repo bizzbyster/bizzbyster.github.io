@@ -5,15 +5,16 @@
     "log_level": "info",
     "alternate_sparrow_chromiumlike": true,
     "percent_clicks_on_hover": 90,
-    "alternate_warm_cold_cache": true,
+    "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "mv_abp_withmodel",
+    "test_label_prefix": "mv_baseline",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-abp-tester"
+        "--hinting-scope=test-home-tester",
+        "--blackbox-on-beer=https://omaha.overnight.ihs.viasat.io/service/feedback/"
         ],
     "save_screenshots": false,
-    "ublock_path": "Adblock-Plus_v1.12.4.crx"
+    "ublock_path": "ublock_origin.crx"
 }
