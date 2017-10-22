@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/from_crawler.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
@@ -7,12 +7,12 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "ken_from_crawler_3",
+    "test_label_prefix": "ken_baseline",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-crawler-4"
+        "--hinting-scope=test-home-tester"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
