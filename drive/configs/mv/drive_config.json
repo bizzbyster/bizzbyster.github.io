@@ -9,12 +9,12 @@
     "poll_download_speed": false,
     "test_label_prefix": "mv_relativity",
     "sparrow_only_switches": [
-        "--ihs-hint-url=wss://mockprod-relativityGW-1793948281.us-east-1.elb.amazonaws.com/hint",
+        "--ihs-hint-url=wss://mockprod-relativityGW-1793948281.us-east-1.elb.amazonaws.com/hint"
     ],
     "common_switches": [
         "--request-beer-ack",
         "--hinting-scope=test-home-tester",
-        "--ihs-beer-url=wss://mockprod-relativityGW-1793948281.us-east-1.elb.amazonaws.com/feedback",
+        "--ihs-beer-url=wss://mockprod-relativityGW-1793948281.us-east-1.elb.amazonaws.com/feedback"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
