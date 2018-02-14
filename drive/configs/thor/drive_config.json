@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/flight_test.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
@@ -7,12 +7,11 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": true,
     "poll_download_speed": false,
-    "test_label_prefix": "thor_release_baseline",
+    "test_label_prefix": "thor_flight_test",
     "sparrow_only_switches": [
     ],
     "common_switches": [
-        "--request-beer-ack",
-        "--hinting-scope=test-release"
+        "--request-beer-ack"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
