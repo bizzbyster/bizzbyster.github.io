@@ -12,7 +12,7 @@
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-sparrow-release"
+        "--hinting-scope=test-sparrow-62.1-release"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
