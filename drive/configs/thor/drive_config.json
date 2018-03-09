@@ -12,7 +12,7 @@
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-viasat-browser-release"
+        "--hinting-scope=test-viasat-browser-64-release"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
