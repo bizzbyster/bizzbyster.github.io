@@ -53,11 +53,10 @@
               <div class="heading-box">
                 <h1>Welcome to Viasat Browser</h1>
                 <div class="search-panel">
-                  <div class="form-group">
-                    <input id="search-query" type="text" class="form-control input-md" placeholder="Google Search" />
-                  </div>
-                  <button class="btn btn-secondary btn-md" onclick="searchGoogle(); return false;">GO ></button>
-                </div>
+                  <form action="http://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
+                    <input autocomplete="on" class="form-controls search" name="q" placeholder="Search Google" required="required"  type="text">
+                    <button class="button" type="submit">Search</button>
+                  </form>
               </div>
             </div>
           </div>
