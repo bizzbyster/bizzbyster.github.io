@@ -42,7 +42,7 @@
             <!-- /.container-fluid -->
           </nav>
 
-          <div class="main-content-panel img-responsive hidden-xs">
+         <div class="main-content-panel img-responsive hidden-xs">
             <div class="desktop-view" style="margin: auto;">
               <div id="out-dated" class="alert alert-danger hidden" role="alert">
                 <p align="center">A new version of Viasat Browser is now available. Please update your browser by visiting viasat://help
@@ -70,7 +70,7 @@
                   <div class="form-group">
                     <input id="username" type="text" class="form-control input-md" placeholder="Google Search" />
                   </div>
-                  <button class="btn btn-secondary btn-md btn-block" data-toggle="modal" data-target="#license-agreement">GO ></button>
+                  <button class="btn btn-secondary btn-md btn-block" onclick="searchGoogle(); return false;" data-toggle="modal" data-target="#license-agreement">GO ></button>
                 </div>
               </div>
             </div>
@@ -78,6 +78,7 @@
           <!-- end of mobile -->
         </div>
       </div>
+
 
       <div class="row body-panel">
         <div class="clearfix desktop-view" style="margin: auto;">
