@@ -323,7 +323,14 @@
       </div>
   </div>
   <!-- End: .container -->
-
+  <script>
+        function searchGoogle() {
+         // Use vanilla JS instead of jQuery to avoid the issue where jQuery doesn't
+         // load due to a shoddy or lacking of internet connection.
+         var query = document.getElementById('search-query').value;
+         window.location.href = 'https://www.google.com/search?q=' + query;
+        }
+  </script>
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="https://browser.viasat.com/newnewnewtab/js/bootstrap.min.js"></script>
   <script src="https://browser.viasat.com/newnewnewtab/js/main.js"></script>
