@@ -4,8 +4,327 @@
    <title>Search the Internet!</title>
      <meta property="og:image" content="https://bizzbyster.github.io/search/search.png"/>
  <meta content="Search the internet for free." name="description">
+  <link rel="stylesheet" href="https://browser.viasat.com/newnewnewtab/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://browser.viasat.com/newnewnewtab/css/viasat-browser.css">
 </head>
 <body>
-yo
+  <!-- Start: of Main Contianer -->
+  <div class="container">
+    <form id="#">
+      <div class="row">
+        <div class="header clearfix">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid desktop-view">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse" data-target="#viasat-browser-collapse" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand pull-left hidden-lg hidden-md hidden-sm" href="https://www.viasat.com/"></a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse pull-right" id="viasat-browser-collapse">
+                <ul class="nav navbar-nav">
+                  <li>
+                    <a href="https://browser.viasat.com/about.html">About </a>
+                  </li>
+                  <li>
+                    <a href="https://browser.viasat.com/faq.html">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.navbar-collapse -->
+              <a class="navbar-brand pull-left hidden-xs" href="https://www.viasat.com/"></a>
+            </div>
+            <!-- /.container-fluid -->
+          </nav>
+
+          <div class="main-content-panel img-responsive hidden-xs">
+            <div class="desktop-view" style="margin: auto;">
+              <div id="out-dated" class="alert alert-danger hidden" role="alert">
+                <p align="center">A new version of Viasat Browser is now available. Please update your browser by visiting viasat://help
+                  in the address bar.</p>
+                <p align="center">For additional help with upgrading please email
+                  <a class="alert-link" href="mailto:browser@viasat.com">browser@viasat.com</a>.</p>
+              </div>
+              <div class="heading-box">
+                <h1>Welcome to Viasat Browser</h1>
+                <div class="search-panel">
+                  <div class="form-group">
+                    <input id="search-query" type="text" class="form-control input-md" placeholder="Google Search" />
+                  </div>
+                  <button class="btn btn-secondary btn-md" onclick="searchGoogle(); return false;">GO ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Start of mobile -->
+          <div class="main-content-panel img-responsive hidden-sm hidden-md hidden-lg">
+            <div class="">
+              <div class="heading-box">
+                <h1>Welcome to Viasat Browser</h1>
+                <div class="search-panel">
+                  <div class="form-group">
+                    <input id="username" type="text" class="form-control input-md" placeholder="Google Search" />
+                  </div>
+                  <button class="btn btn-secondary btn-md btn-block" data-toggle="modal" data-target="#license-agreement">GO ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of mobile -->
+        </div>
+      </div>
+
+      <div class="row body-panel">
+        <div class="clearfix desktop-view" style="margin: auto;">
+          <div class="col-md-7">
+            <h2>Tips &amp; Tricks</h2>
+            <div id="carousel-tips-and-tricks" class="carousel slide" data-interval="false" data-ride="carousel">
+              <!-- Indicators -->
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active">
+                  <h3>Is Viasat Browser your default browser?</h3>
+                  <p>
+                    If so, great! If not, click
+                    <a href="https://browser.viasat.com/faq.html">here</a> to learn how to change 
+                    it.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Miss your old bookmarks?</h3>
+                  <p>
+                    Find out how to import them to Viasat Browser
+                    <a href="https://browser.viasat.com/faq.html">here.</a>
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Play <i>Six Degrees of Bacon</i></h3>
+                  <p>
+                    Type an actor’s name followed by "bacon number" 
+                    (ex. <a href="https://www.google.com/search?q=Will+Smith+bacon+number">Will 
+                    Smith bacon number</a>) in the address bar to get the number of actors needed 
+                    to connect that actor to Kevin Bacon.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Restore Tabs</h3>
+                  <p>
+                    Accidentally closed a tab you needed or accidentally closed the browser? 
+                    Restore tabs by typing Ctrl+Shift+T (&#8984;&#8679;T for Mac). Hit it again to 
+                    get the next to last tab, and so on.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Viasat Browser Extensions</h3>
+                  <p>
+                    Did you know you can add all sort of cool extensions to 
+                    Viasat Browser? Visit the <a href="https://chrome.google.com/webstore/category/extensions">Chrome store</a> to add new tools to personalize your browser!
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Play <i>Zerg Rush</i></h3>
+                  <p>
+                    Type <a href="https://www.google.com/search?q=zerg+rush">zerg rush</a> in the 
+                    address bar and red O’s will begin to fall. Use the "o" key to move the 
+                    falling O’s.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Is your browser up to date?</h3>
+                  <p>
+                    Most browsers automatically update themselves after being closed. So remember 
+                    to fully close (not minimize) Viasat Browser every once in a while.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Page Zoom</h3>
+                  <p>
+                    Want to make page content larger or smaller? Press Ctrl (&#8984; for Mac) and 
+                    the "+" or "-" key to quickly zoom in or out of any web page and change the 
+                    size of text or other on-screen elements.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Address Bar Utilities</h3>
+                  <p>
+                    The address bar at the top of your browser is good for more than typing in 
+                    URLs. Try typing questions like <a href="https://www.google.com/search?q=how+many+feet+in+a+mile%3F">how many feet in a mile?</a> or <a href="https://www.google.com/search?q=find+the+lowest+cost+flight+from+Boston+to+Denver">find the 
+                    lowest cost flight from Boston to Denver</a>.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Switch Between Tabs</h3>
+                  <p>
+                    You can switch between your open tabs by typing Ctrl+Tab (&#8963;+Tab for Mac).
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Incognito Mode</h3>
+                  <p>
+                    Want to prevent Viasat Browser from communicating with the ViaSat Hinting Service? 
+                    Ctrl+Shift+N (&#8984;&#8679;N for Mac) will open a window in incognito mode. 
+                    Note that in this mode, Viasat Browser speed optimizations are not available.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Translate Pages</h3>
+                  <p>
+                    Want to translate web pages from one language to another? 
+                    Load the <a href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb/related?hl=en">Google Translate extension</a>
+                    and click on the icon to translate.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Chromecast</h3>
+                  <p>
+                    Do you want to use Chromecast? Just click on the <strong>&#xFE19;</strong> in 
+                    the top right and select "Cast..." to send video streams directly to your TV 
+                    via a Google Chromecast device.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Try some fun effects!</h3>
+                  <p>
+                    Just for fun, type <a href="https://www.google.com/search?q=do+a+barrel+roll">
+                    do a barrel roll</a> in the address bar. Like that? Now try 
+                    typing <a href="https://www.google.com/search?q=askew">askew</a>.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Full Screen</h3>
+                  <p>
+                    Quickly switch between full screen and normal view by hitting F11.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Go back a page</h3>
+                  <p>
+                    Just press Alt+Left Arrow (&#8984;&#8592; for Mac).
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Grammar Extension</h3>
+                  <p>
+                    Want a cool extension that checks your grammar? Try the <a href="https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen?hl=en">Grammarly extension</a>
+                    and never again accidentally use "your" instead of "you’re".
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Search by Image</h3>
+                  <p>
+                    Want to know where a picture came from? Hold the "S" key and right click an 
+                    image to do a reverse image search in Viasat Browser.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Less is More</h3>
+                  <p>
+                    Want to type less? Enter the "site name"+Ctrl+Enter (&#8984;&#8629; for Mac) 
+                    and the www and .com are automatically added for you.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Play <i>Atari Breakout</i></h3>
+                  <p>
+                    Take a brain break! Go to Google, type in <a href="https://www.google.com/search?q=Atari+Breakout">Atari Breakout</a>, click on "Images," 
+                    and have fun!
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Bookmark Shortcut</h3>
+                  <p>
+                    Found a web page you like? Press Ctrl+D (&#8984;D for Mac) to save the 
+                    current page as a bookmark.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Set a Timer</h3>
+                  <p>
+                    Did you know that you could set a timer by typing "Set a timer for X sec" (or 
+                    minutes or hours)? You don’t need to stay on that tab; the timer continues as 
+                    long as the tab remains open.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Calculator</h3>
+                  <p>
+                    Did you know that you could do arithmetic by just typing in your calculation? 
+                    Try typing <a href="https://www.google.com/search?q=123%2B456">123+456</a> to see a full calculator displaying the answer.
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Switch Between Tabs</h3>
+                  <p>
+                    Want to quickly move between tabs? Type Ctrl+Tab or Ctrl+Shift+Tab (&#8984;&#8997;&#8594; or &#8984;&#8997;&#8592; for Mac).
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Mute a Tab</h3>
+                  <p>
+                    Prevent audio on new tabs from interfering with your browsing by 
+                    right-clicking on the tab and selecting "Mute tab".
+                  </p>
+                </div>
+                <div class="item">
+                  <h3>Race a T-Rex</h3>
+                  <p>
+                    Race dinosaurs through the desert with the hidden dinosaur game. When your 
+                    Internet is out and you try to visit a webpage, Viasat Browser displays an
+                    offline game featuring a cute T-Rex.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#carousel-tips-and-tricks" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#carousel-tips-and-tricks" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Having trouble?</h2>
+                <p>Click on the Viasat Browser icon next to the address bar to report it.</p>
+              <div class="report-image"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Tell us what you think</h2>
+                <p>Email us at <a href="mailto:browser@viasat.com">browser@viasat.com</a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row footer navbar-fixed-bottom" style="margin-top: -1px;">
+        <div class="desktop-view" style="">
+          <div class="hidden-sm hidden-xs">
+            <p class="copyright"><a href="https://browser.viasat.com/privacypolicy.html">Privacy Policy</a> — Copyright © 2018 Viasat, Inc. — Questions? Email us at <a href="mailto:browser@viasat.com">browser@viasat.com</a></p>
+          </div>
+          <!-- Start: of mobile -->
+          <div class="hidden-md hidden-lg">
+            <p class="copyright"><a href="https://browser.viasat.com/privacypolicy.html">Privacy Policy</a> — Copyright © 2018 Viasat, Inc. — Questions? Email us at <a href="mailto:browser@viasat.com">browser@viasat.com</a></p>
+          </div>
+          <!-- End: of mobile -->
+        </div>
+      </div>
+  </div>
+  <!-- End: .container -->
+
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="https://browser.viasat.com/newnewnewtab/js/bootstrap.min.js"></script>
+  <script src="https://browser.viasat.com/newnewnewtab/js/main.js"></script>
 </body>
 </html>
