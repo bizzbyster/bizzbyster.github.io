@@ -68,7 +68,7 @@
                 <h1>Welcome to Viasat Browser</h1>
                 <div class="search-panel">
                   <div class="form-group">
-                    <input id="search-query" type="text" class="form-control input-md" placeholder="Google Search" />
+                    <input id="mobile-search-query" type="text" class="form-control input-md" placeholder="Google Search" />
                   </div>
                   <button class="btn btn-secondary btn-md btn-block" onclick="mySearchGoogle(); return false;">GO ></button>
                 </div>
@@ -328,8 +328,10 @@
          // Use vanilla JS instead of jQuery to avoid the issue where jQuery doesn't
          // load due to a shoddy or lacking of internet connection.
          var query = document.getElementById('search-query').value;
-         console.log(query);
-         //window.location.href = 'https://www.google.com/search?q=' + query;
+         var mobile-query = document.getElementById('mobile-search-query').value;
+         console.log(query + mobile-query);
+         query = query + mobile-query;
+         window.location.href = 'https://www.google.com/search?q=' + query;
         }
   </script>
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
