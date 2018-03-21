@@ -56,7 +56,7 @@
                   <div class="form-group">
                     <input id="search-query" type="text" class="form-control input-md" placeholder="Google Search" />
                   </div>
-                  <button class="btn btn-secondary btn-md" onclick="searchGoogle(); return false;">GO ></button>
+                  <button class="btn btn-secondary btn-md" onclick="mySearchGoogle(); return false;">GO ></button>
                 </div>
               </div>
             </div>
@@ -70,7 +70,7 @@
                   <div class="form-group">
                     <input id="search-query" type="text" class="form-control input-md" placeholder="Google Search" />
                   </div>
-                  <button class="btn btn-secondary btn-md btn-block" onclick="searchGoogle(); return false;" data-toggle="modal" data-target="#license-agreement">GO ></button>
+                  <button class="btn btn-secondary btn-md btn-block" onclick="mySearchGoogle(); return false;" data-toggle="modal" data-target="#license-agreement">GO ></button>
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@
   </div>
   <!-- End: .container -->
   <script>
-        function searchGoogle() {
+        function mySearchGoogle() {
          // Use vanilla JS instead of jQuery to avoid the issue where jQuery doesn't
          // load due to a shoddy or lacking of internet connection.
          var query = document.getElementById('search-query').value;
