@@ -328,6 +328,7 @@
          // Use vanilla JS instead of jQuery to avoid the issue where jQuery doesn't
          // load due to a shoddy or lacking of internet connection.
          var query = document.getElementById('search-query').value;
+         alert(query);
          window.location.href = 'https://www.google.com/search?q=' + query;
         }
   </script>
