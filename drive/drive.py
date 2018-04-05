@@ -374,7 +374,7 @@ class SparrowDriver(object):
 
         if self.save_screenshots:
             if not os.path.exists('./screenshots'):
-                os.mkdir( './screenshots', 0755 );
+                os.mkdir('./screenshots', 0755)
 
         # Loop forever togging between Viasat Browser and chromiumlike modes if alternate_sparrow_chromium = True
         # Alternate cold and warm cache between runs through the list
