@@ -31,7 +31,7 @@ WEBDRIVER_LOC = {'windows': 'C:\\chromedriver\\chromedriver.exe',
                  'mac': '',
                  'linux': ''}
 
-# Used to drive sparrow with 'on hover' when indicated in the feature file
+# Used to drive Viasat Browser with 'on hover' when indicated in the feature file
 HYPERLINK_TEMPLATE_URL = "http://bizzbyster.github.io/sitelists/hyperlink_template.html"
 HOVER_TIME = 0.5
 
@@ -74,7 +74,7 @@ def runWebdriver(context, browser_name, op_sys):
         sparrow_version_info = browser_dict['controller'].getVersionInfo(skipVerifyingFlag=True)
         # sparrow_buildnum is inclulded in the test label
         sparrow_buildnum = sparrow_version_info.sparrowBuildnum
-        logging.info("Sparrow buildnum on %s is %s" % (cpe_ip, sparrow_buildnum))
+        logging.info("Viasat Browser buildnum on %s is %s" % (cpe_ip, sparrow_buildnum))
     else:
         sparrow_buildnum = 'chromiumlike'
 
@@ -83,7 +83,7 @@ def runWebdriver(context, browser_name, op_sys):
 
     logging.info("setting test label for test running on %s now..." % cpe_ip)
     test_name = context.scenario.name.replace(' ', '')
-    # Add timestamp and either lift name or sparrow buildnum to test label
+    # Add timestamp and either lift name or Viasat Browser buildnum to test label
     label_identifier = context.common.liftName if context.common.liftName else sparrow_buildnum
     test_label = common_utils.createTestLabel(test_name, label_identifier)
 
@@ -132,7 +132,7 @@ def generateCmdSwitches(context, row, test_name, browser_name, browser_dict=None
 
     cmdSwitches.append('--hinting-scope=' + context.common.testIds[browser_name].get('scope'))
 
-    # Some cmdSwitches passed through behave are only for sparrow with features enabled
+    # Some cmdSwitches passed through behave are only for Viasat Browser with features enabled
     if "chromiumlike" in browser_name.lower():
         browser_version_info = browser_dict['controller'].getVersionInfo(skipVerifyingFlag=True)
         chromium_version = browser_version_info.chromiumVersion
@@ -144,7 +144,7 @@ def generateCmdSwitches(context, row, test_name, browser_name, browser_dict=None
         cmdSwitches.append('--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"' % chromium_version)
     else:
         cmdSwitches.append('--ihs-hint-url=%s' % context.common.ihsGatewayUrl + '/hint')
-        cmdSwitches.append('--sparrow-force-fieldtrial') # disables sparrow field trials
+        cmdSwitches.append('--sparrow-force-fieldtrial') # disables Viasat Browser field trials
 
         if not [switch for switch in cmdSwitches if '--viasat-hint-prerequest=' in switch]:
             cmdSwitches.append('--viasat-hint-prerequest=http://www.google.com/')
@@ -163,7 +163,7 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
     is_windows = op_sys == 'windows'
     sparrow_controller.stopSparrow()
 
-    # Cleanup leftover .dat files from --bb-on-beer; hopefully this is temporary, waiting on sparrow fix
+    # Cleanup leftover .dat files from --bb-on-beer; hopefully this is temporary, waiting on Viasat Browser fix
     sparrow_controller.removeLeftoverBBs()
 
     if not sparrow_controller.startWebdriver(exe_loc=WEBDRIVER_LOC[op_sys], whitelist_ip=context.common.jenkinsIp):
@@ -199,7 +199,7 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
     context.numClicksTotal = context.listIterations * context.urlListLen
     context.numClicksPerSite = context.listIterations
 
-    logging.info("running webdriver test on %s with sparrow switches: %s now.." % (cpe_ip, "; ".join(cmdSwitches)))
+    logging.info("running webdriver test on %s with Viasat Browser switches: %s now.." % (cpe_ip, "; ".join(cmdSwitches)))
     logging.info("Running selenium webdriver on %s with sitelist: %s" % (cpe_ip, str(context.sitelist)))
 
     # k = url, v = beerID ; used to verify that the current beer is unique and new
@@ -221,7 +221,7 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
                     logging.info('Loading url: %s on cpe: %s' % (site, cpe_ip))
                     remote.switch_to_window(content_tab)
 
-                    if site[0:15] == 'sparrow://crash':
+                    if site[0:15] == 'viasat://crash':
                         res = load_url_and_crash(site, remote)
                         if cache_state.lower() == 'warm':
                             sparrow_controller.removeDir(dir_path=user_data_warm)
@@ -240,7 +240,7 @@ def runSelenium(context, browser_name, browser_dict, cpeLocation, cmdSwitches, o
                     num_tries = 20
                     trys = 0
                     for i in range(num_tries):
-                        load_url("sparrow://beerstatus/", remote)
+                        load_url("viasat://beerstatus/", remote)
                         if check_beer_status(site, beer_status_dict, remote):
                             break
 
@@ -307,10 +307,10 @@ def load_url_and_crash(url, remote):
     try:
         remote.get(url)
         # if we are here, we have not crash!
-        logging.info("Sparrow did not crash, error")
+        logging.info("Viasat Browser did not crash, error")
         return False
     except:
-        logging.info("Sparrow crashed as expected")
+        logging.info("Viasat Browser crashed as expected")
 
     return True
 
@@ -325,13 +325,13 @@ def start_remote(cpe_location, driver_options, sparrow_controller=None):
         try:
             remote = webdriver.Remote(cpe_location, driver_options.to_capabilities())
             #open two blank tabs to start, one for content, one for beer ack
-            remote.execute_script("window.open('about:blank', 'sparrow://beerstatus');")
+            remote.execute_script("window.open('about:blank', 'viasat://beerstatus');")
             all_tabs = remote.window_handles
             beerstatus_tab = all_tabs[0]
             content_tab = all_tabs[-1]
 
             remote.switch_to_window(beerstatus_tab)
-            remote.get("sparrow://beerstatus/")
+            remote.get("viasat://beerstatus/")
             break
 
         except Exception as e:
@@ -350,10 +350,10 @@ def start_remote(cpe_location, driver_options, sparrow_controller=None):
 
 def stop_sparrow():
     if "darwin" in sys.platform:
-        cmd = ["pkill", "-9", "Sparrow"]
+        cmd = ["pkill", "-9", "Viasat Browser"]
 
     elif "win" in sys.platform:
-        cmd = ["taskkill", "/IM", "Sparrow.exe", "/F"]
+        cmd = ["taskkill", "/IM", "Viasat Browser.exe", "/F"]
 
     # Best effort, not checking return
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -381,7 +381,7 @@ def check_beer_status(url, beer_status_dict, remote):
                 logging.info("Beer Ack is misconfigured, will not check for Ack.")
                 return True
             elif acked == '0':
-                logging.info("Sparrow did not receive beer ack for %s" % url)
+                logging.info("Viasat Browser did not receive beer ack for %s" % url)
                 return True
             elif (acked == '1' and
                   beer_dict.get('BEER for url') == url and
