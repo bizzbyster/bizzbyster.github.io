@@ -1,0 +1,17 @@
+{
+    "sitelist_file": "/Users/mgietzmann/repos/automation/tools/ios_sitelist.txt",
+    "alternate_sparrow_chromiumlike": true,
+    "alternate_warm_cold_cache": true,
+    "test_label_prefix": "ios_release_baseline",
+    "sparrow_only_switches": [
+    ],
+    "common_switches": [
+        "--hinting-scope=test-release"
+        ],
+    "adblock_enabled": true,
+    "device": "iPhone 7",
+    "udid": "c56ebb4f8c98540a9b0cb13af36fa458839f589b",
+    "platform": "iOS",
+    "os": "11.4",
+    "app_path": "/Users/mgietzmann/Git/src/out/Release-iphoneos/Viasat Browser.app"
+}
