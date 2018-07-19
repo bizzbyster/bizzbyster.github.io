@@ -2,16 +2,14 @@
     "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
-    "test_label_prefix": "ios_simuser_baseline_ares",
+    "test_label_prefix": "android_simuser_baseline_hermes",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--hinting-scope=test-release"
         ],
     "adblock_enabled": true,
-    "device": "iPhone 7",
-    "udid": "b54539fc7ff96050083dcb8d51daeb4583a5bbcc",
-    "platform": "iOS",
-    "os": "11.4",
-    "app_path": "/Users/simuser/Git/viasat_browser/src/out/Release-iphoneos/Viasat Browser.app"
+    "device": "Galaxy S6",
+    "platform": "Android",
+    "os": "6.0.1"
 }
