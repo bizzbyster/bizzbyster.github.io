@@ -8,7 +8,7 @@
     "common_switches": [
         "--hinting-scope=test-release"
         ],
-    "adblock_enabled": false,
+    "adblock_enabled": true,
     "device": "iPhone 7",
     "udid": "b54539fc7ff96050083dcb8d51daeb4583a5bbcc",
     "platform": "iOS",
