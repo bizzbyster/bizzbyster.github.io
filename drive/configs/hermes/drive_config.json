@@ -8,7 +8,7 @@
     "common_switches": [
         "--hinting-scope=test-release"
         ],
-    "adblock_enabled": false,
+    "adblock_enabled": true,
     "device": "Galaxy S6",
     "platform": "Android",
     "os": "6.0.1"
