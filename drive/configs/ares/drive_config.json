@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/mobile_sitelist.txt",
     "alternate_sparrow_chromiumlike": true,
     "alternate_warm_cold_cache": true,
     "test_label_prefix": "ios_simuser_baseline_ares",
