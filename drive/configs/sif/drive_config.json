@@ -1,18 +1,18 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/top_sites_edited.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/data_saver_list.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
-    "alternate_sparrow_chromiumlike": true,
+    "alternate_sparrow_chromiumlike": false,
     "percent_clicks_on_hover": 90,
-    "alternate_warm_cold_cache": true,
+    "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "sif_release_baseline",
+    "test_label_prefix": "data_saver_off_sif",
     "sparrow_only_switches": [
     ],
     "common_switches": [
         "--request-beer-ack",
-        "--hinting-scope=test-viasat-browser-64-release"
+        "--hinting-scope=test_data_saver"
         ],
     "save_screenshots": false,
     "ublock_path": "ublock_origin.crx"
