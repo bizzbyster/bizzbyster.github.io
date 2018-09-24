@@ -1,5 +1,5 @@
 {
-    "sitelist_file": "http://bizzbyster.github.io/sitelists/data_saver_placebo_list.txt",
+    "sitelist_file": "http://bizzbyster.github.io/sitelists/adblock_list.txt",
     "log_file": "drive_log",
     "log_to_console": true,
     "log_level": "info",
@@ -7,7 +7,7 @@
     "percent_clicks_on_hover": 90,
     "alternate_warm_cold_cache": false,
     "poll_download_speed": false,
-    "test_label_prefix": "data_saver_placebo_sif",
+    "test_label_prefix": "adblock_sif",
     "sparrow_only_switches": [
     ],
     "common_switches": [
