@@ -9,7 +9,8 @@
     "sparrow_only_switches": [
     ],
     "common_switches": [
-        "--request-beer-ack"
+        "--request-beer-ack",
+        "--blackbox-on-beer"
         ],
     "save_screenshots": false
 }
