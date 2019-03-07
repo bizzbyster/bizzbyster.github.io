@@ -9,7 +9,7 @@
     "alternate_warm_cold_cache": false,
     "alternate_sparrow_chromiumlike": false,
     "sparrow_only_switches": [
-        "--blackbox-on-beer=https://omahainternalpri.ihs.viasat.io/"
+        "--blackbox-on-beer=https://omahainternal.ihs.viasat.io/"
     ],
     "common_switches": [
         "--request-beer-ack"
