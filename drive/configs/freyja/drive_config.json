@@ -12,8 +12,7 @@
         "--blackbox-on-beer=https://omahainternalpri.ihs.viasat.io/"
     ],
     "common_switches": [
-        "--request-beer-ack",
-        "--hinting-scope=test_freyja_spdy_1"
+        "--request-beer-ack"
         ],
     "save_screenshots": false
 }
