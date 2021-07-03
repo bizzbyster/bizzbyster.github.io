@@ -55,8 +55,8 @@ except:
 USR_AGENT_OSX = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_WIN = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s Safari/537.36"
 USR_AGENT_LINUX = "??"
-WINDOWS_SPARROW_LOCATION = 'C:\\Users\\%s\\AppData\\Local\\ViaSat\\Sparrow\\Application\\sparrow.exe'
-MAC_SPARROW_LOCATION = '/Applications/Sparrow.app/Contents/MacOS/Sparrow'
+WINDOWS_SPARROW_LOCATION = 'C:\\Program Files (x86)\\ViaSat\\Viasat Browser\\Application\\Viasat Browser.exe'
+MAC_SPARROW_LOCATION = '/Applications/Viasat Browser.app/Contents/MacOS/Viasat Browser'
 
 class SparrowDriver(object):
 
@@ -149,7 +149,7 @@ class SparrowDriver(object):
 
         elif 'win' in sys.platform.lower():
             self.binary_location = json_data.get('sparrow_location_windows',
-                WINDOWS_SPARROW_LOCATION % self.username)
+                WINDOWS_SPARROW_LOCATION)
 
             if 'cygwin' in sys.platform.lower():
                 cmd = ['wmic', 'datafile', 'where', r'name="%s"' % self.binary_location.replace('\\', '\\\\'), 'get', 'Version']
@@ -225,7 +225,7 @@ class SparrowDriver(object):
             driver_options.add_argument('--user-data-dir=%s' % self.sparrow_user_data_dir)
             for switch in self.sparrow_only_switches:
                 driver_options.add_argument(switch)
-                logging.debug("Adding switch to sparrow only: %s" % switch)
+                logging.debug("Adding switch to Viasat Browser only: %s" % switch)
 
         # Passed from config file
         for switch in self.common_switches:
@@ -255,7 +255,7 @@ class SparrowDriver(object):
         driver_options = self.add_options(chromiumlike, cache_state)
         selenium_methods.stop_sparrow()
 
-        # launch sparrow and initial tabs
+        # launch Viasat Browser and initial tabs
         remote, beerstatus_tab, content_tab = selenium_methods.start_remote(self.service.service_url, driver_options)
 
         # Used to verify that the current beer is unique and new
@@ -348,7 +348,7 @@ class SparrowDriver(object):
             num_tries = 40
             trys = 0
             while (trys < num_tries):
-                remote.get("sparrow://beerstatus")
+                remote.get("viasat://beerstatus")
                 if selenium_methods.check_beer_status(site, beer_status_dict, remote):
                     break
 
@@ -374,9 +374,9 @@ class SparrowDriver(object):
 
         if self.save_screenshots:
             if not os.path.exists('./screenshots'):
-                os.mkdir( './screenshots', 0755 );
+                os.mkdir('./screenshots', 0755)
 
-        # Loop forever togging between sparrow and chromiumlike modes if alternate_sparrow_chromium = True
+        # Loop forever togging between Viasat Browser and chromiumlike modes if alternate_sparrow_chromium = True
         # Alternate cold and warm cache between runs through the list
         clear_cache = True
         chromiumlike_mode = True if self.chromiumlike_only else False
